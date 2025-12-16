@@ -1,0 +1,5 @@
+matplotlib==3.9.4
+numpy==2.0.2
+scipy==1.13.1
+torch==2.6.0
+torch-optimizer==0.3.0
