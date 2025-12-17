@@ -1,7 +1,36 @@
 # Differentiable Fast Fault Simulation Model (DFFSM) for PV
 
-DFFSM is a differential physical simulator developed for photovoltaic (PV) string fault modeling and fault quantification. 
-It estimates the current-voltage characteristic curve (I-V curve) of a PV string under a certain fault condition (encoded by a fault vector), given the in-plane irradiance and cell temperature. 
+<!-- 项目徽章 -->
+![PyTorch](https://img.shields.io/badge/-PyTorch-black?logo=pytorch&logoColor=red&style=flat-square)
+![Version](https://img.shields.io/badge/Version-1.0.0-brightgreen.svg)
+![License](https://img.shields.io/badge/License-AGPLv3-blue.svg)
+
+
+> DFFSM is a differential physical simulator developed for photovoltaic (PV) string fault modeling and fault quantification. 
+
+
+## Table of Contents
+- [Installation](#installation)
+- [Background](#background)
+- [Fault modeling using DFFSM](#fault-modeling-using-dffsm)
+- [Gradient-based fault parameters identification (GFPI) based on DFFSM](#gradient-based-fault-parameters-identification-gfpi-based-on-dffsm)
+- [Citation](#citation)
+
+
+## Installation
+```bash
+git clone https://github.com/Yuanliang-Li/dffsm.git
+cd dffsm
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install --upgrade -r requirements.txt
+```
+
+## Background 
+### DFFSM introduction
+DFFSM is a differential physical simulator developed for PV string fault modeling and fault quantification.  It estimates the current-voltage characteristic curve (I-V curve) of a PV string under a certain fault condition (encoded by a fault vector), given the in-plane irradiance and cell temperature. 
+
 A key property of DFFSM is its differentiability, which computes gradients of a predefined loss function with respect to the input.
 Based on its differentiability, DFFSM can be used to identify the fault vector from a measured I-V curve using
 gradient-based fault parameters identification (GFPI) method. 
@@ -9,8 +38,7 @@ gradient-based fault parameters identification (GFPI) method.
 DFFSM is implemented based on PyTorch using Python, which adopts PyTorch's autograd mechanism to automatically calculate the gradient, 
 thereby making the implementation convenient and flexible.
 
-
-## Background (CFFSM vs. DFFSM)
+### CFFSM vs. DFFSM
 Before DFFSM, we have developed CFFSM (a code-based fast fault simulation model), which is a numerical simulator for PV fault modeling. 
 CFFSM can simulate a set of faults occurred in a PV string under different solar irradiation and temperature conditions, 
 including partial shading (PS), bypass diode short-circuit (BD-SC), bypass diode open-circuit (BD-OC), and degradation, with high computational efficiency.
@@ -27,22 +55,27 @@ The following table shows the comparison between CFFSM and DFFSM:
 |**DFFSM**|T-I, Current sequence, Fault Vector| Voltage sequence | PS, BD-SC, BD-OC, DG | De Soto / CEC  | LambertW-Newton-RB |Yes| Python  PyTorch |
 ------------------
 where
-- T-I: cell temperature and irradiance
-- PS: partial shading
-- BD-SC: bypass diode short-circuit, 
-- BD-OC: bypass diode open-circuit, 
-- DG: degradation
-- LambertW: calculate voltage based on the explicit LambertW function under single-diode model (SDM)
-- Newton: calculate voltage based on Newton method under single-diode model (SDM)
-- Newton-RB: calculate voltage based on Newton method under reverse-biased single-diode model (RSDM)
-- LambertW-Newton-RB: Use LambertW to calculate the initial guess of the voltage, then calculate voltage based on Newton method under RSDM
+- T-I: cell temperature and irradiance.
+- PS: partial shading.
+- BD-SC: bypass diode short-circuit.
+- BD-OC: bypass diode open-circuit. 
+- DG: degradation.
+- LambertW: calculate voltage based on the explicit LambertW function under single-diode model (SDM).
+- Newton: calculate voltage based on Newton method under single-diode model (SDM).
+- Newton-RB: calculate voltage based on Newton method under reverse-biased single-diode model (RSDM).
+- LambertW-Newton-RB: Use LambertW to calculate the initial guess of the voltage, then calculate voltage based on Newton method under RSDM.
+
+
 
 ## Fault modeling using DFFSM 
 Given a fault vector `x`, cell temperature (`T`), irradiance (`S`), and a current sequence (`I`), DFFSM calculates the corresponding voltage sequence (`V`) for a PV string. This calculation is called "forward calculation" of DFFSM, as follows:
 
 `V = DFFSM.forward(I, T, S, x)`
 
-The fault vector is defined as: `x = [n_s1, n_c1, r_1, n_s2, n_c2, r_2, n_sc, D_oc, Rc]`, where
+The fault vector is defined as: 
+
+`x = [n_s1, n_c1, r_1, n_s2, n_c2, r_2, n_sc, D_oc, Rc]`
+
 - `n_s1` (int [`0~Nsub`]): number of sub-strings affected by shadow-1 (starting from first substring)
 - `n_c1` (int [`0~Nsubc`]): number of PV cells in each substring affected by shadow-1 
 - `r_1` (float [0~1]): shading ratio affected by shadow-1 (percent of lost irradiance), ffective irradiance = S_m * (1-r_1)
@@ -88,3 +121,38 @@ for i in range(1000):
 By running `main_GFPI.py`, we get the following results, where two optimizers (Adahessian vs. Adam) are compared under a given I-V curve that is simulated by CFFSM. 
 
 ![](./images/gfpi.png)
+
+
+
+## Citation
+If you use DFFSM or GFPI in your work, please cite:
+```bibtex
+@misc{githubdffsm,
+  author= {Yuanliang Li},
+  title= {Differentiable Fast Fault Simulation Model (DFFSM) for PV},
+  year= {2025},
+  url = {\url{https://github.com/Yuanliang-Li/dffsm}}
+}
+```
+
+If you use CFFSM in your work, please cite:
+```bibtex
+@article{li2019fault,
+  title={A fault diagnosis method for photovoltaic arrays based on fault parameters identification},
+  author={Li, Yuanliang and Ding, Kun and Zhang, Jingwei and Chen, Fudong and Chen, Xiang and Wu, Jiabing},
+  journal={Renewable Energy},
+  volume={143},
+  pages={52--63},
+  year={2019},
+  publisher={Elsevier}
+}
+
+@inproceedings{liu2020improved,
+  title={An improved code-based fault simulation model for PV module},
+  author={Liu, Yongjie and Ding, Kun and Zhang, Jingwei and Li, Yuanliang},
+  booktitle={2020 12th IEEE PES Asia-Pacific Power and Energy Engineering Conference (APPEEC)},
+  pages={1--5},
+  year={2020},
+  organization={IEEE}
+}
+```
