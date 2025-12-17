@@ -72,9 +72,9 @@ Given a fault vector `x`, cell temperature (`T`), irradiance (`S`), and a curren
 
 `V = DFFSM.forward(I, T, S, x)`
 
-The fault vector is defined as: 
+The fault vector is used to quantify concurrent faults, which is defined as: 
 
-`x = [n_s1, n_c1, r_1, n_s2, n_c2, r_2, n_sc, D_oc, Rc]`
+`x = [n_s1, n_c1, r_1, n_s2, n_c2, r_2, n_sc, d_oc1, d_oc2, Rc]`
 
 - `n_s1` (int [`0~Nsub`]): number of sub-strings affected by shadow-1 (starting from first substring)
 - `n_c1` (int [`0~Nsubc`]): number of PV cells in each substring affected by shadow-1 
@@ -85,7 +85,7 @@ The fault vector is defined as:
 - `n_sc` (int [`0~Nsub-n_s1-n_s2`]): number of bypass diodes (substrings) short-circuited
 - `d_oc1` (int {0,1}): existing of bypass diode open-circuit on the first shadow
 - `d_oc2` (int {0,1}): existing of bypass diode open-circuit on the second shadow
-- `Rc` (float [0~10]): cable degradation
+- `Rc` (float [0~10]): resistance degradation
 
 where `Nsub` is the total number of substrings in a PV string, `Nsubc` is the total number of PV cells in a substring. (A substring is a series of PV cells under a bypass diode in a PV module)
 

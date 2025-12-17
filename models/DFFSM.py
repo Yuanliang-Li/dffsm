@@ -167,7 +167,7 @@ class DFFSM:
             6   n_sc (int [0~Nsub-n_s1-n_s2]): number of bypass diodes short-circuited
             7   d_oc1 (int {0,1}): existing of bypass diode open-circuit on the first shadow
             8   d_oc2 (int {0,1}): existing of bypass diode open-circuit on the second shadow
-            9   Rc (float [0~10]): cable degradation
+            9   Rc (float [0~10]): resistance degradation
 
         Returns
         V: string voltage tensor
