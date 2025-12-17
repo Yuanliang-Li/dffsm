@@ -78,11 +78,11 @@ The fault vector is defined as:
 
 - `n_s1` (int [`0~Nsub`]): number of sub-strings affected by shadow-1 (starting from first substring)
 - `n_c1` (int [`0~Nsubc`]): number of PV cells in each substring affected by shadow-1 
-- `r_1` (float [0~1]): shading ratio affected by shadow-1 (percent of lost irradiance), ffective irradiance = S_m * (1-r_1)
+- `r_1` (float [0~1]): shading ratio affected by shadow-1 (percent of lost irradiance), effective irradiance = S*(1-r_1)
 - `n_s2` (int [`0~Nsub`]): number of sub-strings affected by shadow-2 (starting after the first shadow)
 - `n_c2` (int [`0~Nsubc`]): number of PV cells in each substring affected by shadow-2
-- `r_2` (float [0~1]): shading ratio affected by shadow-2 (comparison ration to r_1), effective irradiance = S_m * (1 - r_1 * r_2)
-- `n_sc` (int [`0~Nsub-n_s1-n_s2`]): number of bypass diodes short-circuited
+- `r_2` (float [0~1]): shading ratio affected by shadow-2 (comparison ration to r_1), effective irradiance = S*(1-r_2)
+- `n_sc` (int [`0~Nsub-n_s1-n_s2`]): number of bypass diodes (substrings) short-circuited
 - `d_oc1` (int {0,1}): existing of bypass diode open-circuit on the first shadow
 - `d_oc2` (int {0,1}): existing of bypass diode open-circuit on the second shadow
 - `Rc` (float [0~10]): cable degradation

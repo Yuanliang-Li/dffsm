@@ -162,8 +162,8 @@ class DFFSM:
                                     effective irradiance = S_m * (1-r_1)
             3   n_s2 (int [0~Nsub]): number of sub-strings affected by shadow-2 (starting after the first shadow)
             4   n_c2 (int [0~Nsubc]): number of PV cells in each substring affected by shadow-2
-            5   r_2 (float [0~1]): shading ratio affected by shadow-2 (comparison ration to r_1)
-                                    effective irradiance = S_m * (1 - r_1 * r_2)
+            5   r_2 (float [0~1]): shading ratio affected by shadow-2
+                                    effective irradiance = S_m * (1-r_2)
             6   n_sc (int [0~Nsub-n_s1-n_s2]): number of bypass diodes short-circuited
             7   d_oc1 (int {0,1}): existing of bypass diode open-circuit on the first shadow
             8   d_oc2 (int {0,1}): existing of bypass diode open-circuit on the second shadow
