@@ -128,7 +128,7 @@ By running `main_GFPI.py`, we get the following results, where two optimizers (A
 If you use DFFSM or GFPI in your work, please cite:
 ```bibtex
 @misc{githubdffsm,
-  author= {Yuanliang Li},
+  author= {Li, Yuanliang and Yang, Zenan},
   title= {Differentiable Fast Fault Simulation Model (DFFSM) for PV},
   year= {2025},
   url = {\url{https://github.com/Yuanliang-Li/dffsm}}

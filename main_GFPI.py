@@ -1,3 +1,10 @@
+"""
+Description: gradient-based fault parameters identification (GFPI) using DFFSM.
+Version: 1.0
+Authors: Yuanliang Li, Zenan Yang
+Latest Update: 2025-12-17
+"""
+
 import torch
 import numpy as np
 from models.DFFSM import DFFSM
