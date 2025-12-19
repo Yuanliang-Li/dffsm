@@ -134,6 +134,7 @@ If you use DFFSM or GFPI in your work, please cite:
   url = {\url{https://github.com/Yuanliang-Li/dffsm}}
 }
 ```
+Additionally, a pre-print paper about this project will be available soon. 
 
 If you use CFFSM in your work, please cite:
 ```bibtex
