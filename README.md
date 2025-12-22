@@ -2,8 +2,11 @@
 
 <!-- 项目徽章 -->
 ![PyTorch](https://img.shields.io/badge/-PyTorch-black?logo=pytorch&logoColor=red&style=flat-square)
-![Version](https://img.shields.io/badge/Version-1.0.0-brightgreen.svg)
+![Version](https://img.shields.io/badge/Version-1.0.0-brightgreen.svg) 
 ![License](https://img.shields.io/badge/License-AGPLv3-blue.svg)
+[![arXiv](https://img.shields.io/badge/arXiv-2512.17107-B31B1B?logo=arxiv&logoColor=white&style=flat-square)](https://arxiv.org/abs/2512.17107)
+
+
 
 
 > DFFSM is a differential physical simulator developed for photovoltaic (PV) string fault modeling and fault quantification. 
@@ -49,10 +52,10 @@ DFFSM is an advancement of CFFSM by adding the differentiability.
 
 The following table shows the comparison between CFFSM and DFFSM:
 
-|Model|Input| Output |  Fault Types  | 5-Parameter Calculation Method | Voltage Solver       |Differentiable| Framework  |
-|-----|------|------------------|---------------------|------------------------|----------------|------|------------|
-|CFFSM|T-I, User-friendly Fault| I-V curve        | PS, BD-SC, BD-OC, DG | De Soto / CEC   | LambertW / Newton / Newton-RB |No| Python  Numpy |
-|**DFFSM**|T-I, Current sequence, Fault Vector| Voltage sequence | PS, BD-SC, BD-OC, DG | De Soto / CEC  | LambertW-Newton-RB |Yes| Python  PyTorch |
+|Model|Input| Output |  Fault Types  | 5-Parameter Calculation Method | Voltage Solver       |Differentiable| Framework  |Ref  |
+|-----|------|------------------|---------------------|------------------------|----------------|------|------------|---|
+|CFFSM|T-I, User-friendly Fault| I-V curve        | PS, BD-SC, BD-OC, DG | De Soto / CEC   | LambertW / Newton / Newton-RB |No| Python  Numpy |[link](https://doi.org/10.1109/APPEEC48164.2020.9220607) [link](https://doi.org/10.1016/j.renene.2019.04.147) |
+|**DFFSM**|T-I, Current sequence, Fault Vector| Voltage sequence | PS, BD-SC, BD-OC, DG | De Soto / CEC  | LambertW-Newton-RB |Yes| Python  PyTorch | [link](https://arxiv.org/abs/2512.17107)|
 ------------------
 where
 - T-I: cell temperature and irradiance.
@@ -127,17 +130,28 @@ By running `main_GFPI.py`, we get the following results, where two optimizers (A
 ## Citation
 If you use DFFSM or GFPI in your work, please cite:
 ```bibtex
-@misc{githubdffsm,
-  author= {Li, Yuanliang and Yang, Zenan},
-  title= {Differentiable Fast Fault Simulation Model (DFFSM) for PV},
-  year= {2025},
-  url = {\url{https://github.com/Yuanliang-Li/dffsm}}
+@misc{yang2025fault,
+  title={Fault Diagnosis and Quantification for Photovoltaic Arrays based on Differentiable Physical Models}, 
+  author={Zenan Yang and Yuanliang Li and Jingwei Zhang and Yongjie Liu and Kun Ding},
+  year={2025},
+  eprint={2512.17107},
+  archivePrefix={arXiv},
+  url={https://arxiv.org/abs/2512.17107}, 
 }
 ```
-Additionally, a pre-print paper about this project will be available soon. 
+
 
 If you use CFFSM in your work, please cite:
 ```bibtex
+@inproceedings{liu2020improved,
+  title={An improved code-based fault simulation model for PV module},
+  author={Liu, Yongjie and Ding, Kun and Zhang, Jingwei and Li, Yuanliang},
+  booktitle={2020 12th IEEE PES Asia-Pacific Power and Energy Engineering Conference (APPEEC)},
+  pages={1--5},
+  year={2020},
+  organization={IEEE}
+}
+
 @article{li2019fault,
   title={A fault diagnosis method for photovoltaic arrays based on fault parameters identification},
   author={Li, Yuanliang and Ding, Kun and Zhang, Jingwei and Chen, Fudong and Chen, Xiang and Wu, Jiabing},
@@ -146,14 +160,5 @@ If you use CFFSM in your work, please cite:
   pages={52--63},
   year={2019},
   publisher={Elsevier}
-}
-
-@inproceedings{liu2020improved,
-  title={An improved code-based fault simulation model for PV module},
-  author={Liu, Yongjie and Ding, Kun and Zhang, Jingwei and Li, Yuanliang},
-  booktitle={2020 12th IEEE PES Asia-Pacific Power and Energy Engineering Conference (APPEEC)},
-  pages={1--5},
-  year={2020},
-  organization={IEEE}
 }
 ```
