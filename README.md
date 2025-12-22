@@ -128,7 +128,7 @@ By running `main_GFPI.py`, we get the following results, where two optimizers (A
 
 
 ## Citation
-If you use DFFSM or GFPI in your work, please cite:
+If you use DFFSM or GFPI in your work, please cite the original paper:
 ```bibtex
 @misc{yang2025fault,
   title={Fault Diagnosis and Quantification for Photovoltaic Arrays based on Differentiable Physical Models}, 
